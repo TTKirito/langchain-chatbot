@@ -6,8 +6,28 @@ name = "pypi"
 [packages]
 black = "*"
 langchain = "*"
-pinecone-client = "*"
 streamlit = "*"
+nest-asyncio = "*"
+install = "*"
+google-search-results = "*"
+scrapy = "*"
+beautifulsoup4 = "*"
+playwright = "*"
+html2text = "*"
+chromadb = "*"
+python-magic-bin = {git = "git+https://github.com/julian-r/python-magic.git"}
+unstructured = {extras = ["local-inference"], version = "*"}
+tiktoken = "*"
+pytesseract = "*"
+advertools = "*"
+detectron2 = {ref = "v0.6", git = "git+https://github.com/facebookresearch/detectron2.git"}
+langchain-community = "*"
+django-scheduler = "*"
+schedule = "*"
+langchain-openai = "*"
+pinecone-client = "*"
+pgvector = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

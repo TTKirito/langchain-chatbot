@@ -1,17 +1,13 @@
 from typing import Set
-
 from backend.core import run_llm
+
 import streamlit as st
-from streamlit import write
-from streamlit import chat_message
 
 st.header("Company Test Bot")
-
 prompt = st.chat_input("Prompt")
 
 if "user_prompt_history" not in st.session_state:
     st.session_state["user_prompt_history"] = []
-
 if "chat_answers_history" not in st.session_state:
     st.session_state["chat_answers_history"] = []
 if "chat_history" not in st.session_state:
@@ -32,18 +28,9 @@ def create_sources_string(source_urls: Set[str]) -> str:
 if prompt:
     with st.spinner("Generating response..."):
         generated_response = run_llm(query=prompt)
-        print(generated_response, 'hixxxxxxxxxxxxxxxx')
-        sources = set(
-            [doc.metadata["source"] for doc in generated_response['source_documents']]
-        )
-
         formatted_response = (
-            # f"{generated_response['result']} \n\n {create_sources_string(sources)}"
-            # f"{generated_response['result']} \n\n"
             f"{generated_response['answer']} \n\n"
-
         )
-
         st.session_state["user_prompt_history"].append(prompt)
         st.session_state["chat_answers_history"].append(formatted_response)
         st.session_state["chat_history"].append((prompt, generated_response['answer']))
@@ -57,3 +44,5 @@ if st.session_state['chat_answers_history']:
 
         print(user_query, 'query')
         print(generated_response, 'response')
+
+# step1 : load pdf => step2 cohere embedding => stepn: Question answer
